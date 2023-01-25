@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="author" content="Yulia Ageeva">
+  <title>Проект Место</title>
+</head>
+
+<body class="root">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="логотип проекта">
+    <hr class="header__line">
+  </header>
+  <main>
+    <section class="profile">
+      <img class="profile__avatar" src="./images/avatar.svg" alt="фотография Жак-Ив Кусто">
+      <div class="profile__info">
+        <div class="profile__author">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__modify" type="button"></button>
+        </div>
+        <p class="profile__description">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+    <section class="gallery">
+      <ul class="places">
+        <article class="places__card">
+          <img class="places__image" src="./images/madrid.jpg" alt="Мадрид">
+          <div class="places__description">
+            <h3 class="places__name">Мадрид
+            </h3>
+            <button class="places__like places__like_active" type="button"></button>
+          </div>
+        </article>
+        <article class="places__card">
+          <img class="places__image" src="./images/moscow.jpg" alt="Москва">
+          <div class="places__description">
+            <h3 class="places__name">Москва
+            </h3>
+            <button class="places__like places__like_active" type="button"></button>
+          </div>
+        </article>
+        <article class="places__card">
+          <img class="places__image" src="./images/nizhny.jpg" alt="Нижний Новгород">
+          <div class="places__description">
+            <h3 class="places__name">Нижний Новгород
+            </h3>
+            <button class="places__like places__like_active" type="button"></button>
+          </div>
+        </article>
+        <article class="places__card">
+          <img class="places__image" src="./images/porto.jpg" alt="Порту">
+          <div class="places__description">
+            <h3 class="places__name">Порту
+            </h3>
+            <button class="places__like places__like_active" type="button"></button>
+          </div>
+        </article>
+        <article class="places__card">
+          <img class="places__image" src="./images/seul.jpg" alt="Сеул">
+          <div class="places__description">
+            <h3 class="places__name">Сеул
+            </h3>
+            <button class="places__like places__like_active" type="button"></button>
+          </div>
+        </article>
+        <article class="places__card">
+          <img class="places__image" src="./images/singapore.jpg" alt="Сингапур">
+          <div class="places__description">
+            <h3 class="places__name">Сингапур
+            </h3>
+            <button class="places__like places__like_active" type="button"></button>
+          </div>
+        </article>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+  </footer> 
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close-button" type="button"></button>
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <form class="popup__form">
+        <input class="popup__input popup__input_name" type="text" name="name" placeholder="Ваше имя">
+        <input class="popup__input popup__input_description" type="text" name="name" placeholder="О себе">
+        <button class="popup__submit-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

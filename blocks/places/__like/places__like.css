@@ -1,0 +1,10 @@
+.places__like {
+  background-image: url(../../../images/like.svg);
+  height: 19px;
+  width: 22px;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: center;
+  box-sizing: border-box;
+}
