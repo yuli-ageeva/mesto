@@ -12,6 +12,10 @@
   margin-top: 18px;
 }
 
+.popup__submit-button:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width:500px) {
   .popup__submit-button {
     font-size: 14px;

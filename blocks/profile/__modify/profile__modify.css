@@ -9,6 +9,10 @@
   background-position: center;
 }
 
+.profile__modify:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width:900px) {
   .profile__modify {
     width: 18px;
