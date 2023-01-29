@@ -7,6 +7,8 @@
   background-color: white;
   background-position: center;
   box-sizing: border-box;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .places__like:hover {

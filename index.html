@@ -13,7 +13,6 @@
 <body class="root">
   <header class="header">
     <img class="header__logo" src="./images/logo.svg" alt="логотип проекта">
-    <hr class="header__line">
   </header>
   <main>
     <section class="profile">
@@ -21,14 +20,14 @@
       <div class="profile__info">
         <div class="profile__author">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__modify" type="button"></button>
+          <button class="profile__modify" type="button" aria-label="открыть"></button>
         </div>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <button class="profile__add-button" type="button"></button>
+      <button class="profile__add-button" type="button" aria-label="добавить"></button>
     </section>
     <section class="gallery">
-      <ul class="places">
+      <div class="places">
         <article class="places__card">
           <img class="places__image" src="./images/madrid.jpg" alt="Мадрид">
           <div class="places__description">
@@ -77,7 +76,7 @@
             <button class="places__like places__like_active" type="button"></button>
           </div>
         </article>
-      </ul>
+      </div>
     </section>
   </main>
   <footer class="footer">
@@ -85,16 +84,16 @@
   </footer>
   <div class="popup">
     <div class="popup__container">
-      <button class="popup__close-button" type="button"></button>
+      <button class="popup__close-button" type="button" aria-label="закрыть"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
-      <form class="popup__form">
-        <input class="popup__input popup__input_name" type="text" name="name" placeholder="Ваше имя">
-        <input class="popup__input popup__input_description" type="text" name="name" placeholder="О себе">
+      <form class="popup__form" name="profile-form">
+        <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Ваше имя">
+        <input class="popup__input popup__input_type_description" type="text" name="name" placeholder="О себе">
         <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
-  <script src="./pages/script.js"></script>
+  <script src="./pages/index.js"></script>
 </body>
 
 </html>

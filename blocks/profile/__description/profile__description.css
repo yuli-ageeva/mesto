@@ -6,6 +6,9 @@
   line-height: 22px;
   margin: 0;
   padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width:900px) {
@@ -13,5 +16,6 @@
     font-size: 14px;
     margin: 0 auto;
     line-height: 17px;
+    white-space: pre-line;
   }
 }
