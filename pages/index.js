@@ -14,20 +14,39 @@ const cardZoomPopupCaption = cardZoomPopup.querySelector('.popup__caption');
 
 const closeButtons = document.querySelectorAll('.popup__close-button');
 
+const escKeydownHandler = (evt) => {
+  if (evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened')
+    closePopup(openPopup);
+  }
+}
 
 function closePopup(p) {
   p.classList.remove('popup_opened');
+  document.removeEventListener('keydown', escKeydownHandler)
+  p.querySelector(".popup__form").reset()
 }
 
 function openPopup(p) {
   p.classList.add('popup_opened');
+  document.addEventListener('keydown', escKeydownHandler);
 }
+
+const closePopupOverlay = (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target.closest('.popup'));
+  }
+}
+
+editProfilePopup.addEventListener('click', closePopupOverlay);
+cardZoomPopup.addEventListener('click', closePopupOverlay);
+addCardPopup.addEventListener('click', closePopupOverlay);
 
 document.querySelector('.profile__modify')
   .addEventListener("click", () => {
-    openPopup(editProfilePopup);
     editProfilePopupNameInput.value = profileName.textContent;
-    editProfilePopupDescriptionInput.value = profileDescription.textContent;;
+    editProfilePopupDescriptionInput.value = profileDescription.textContent;
+    openPopup(editProfilePopup);
   })
 
 editProfilePopup.querySelector('.popup__form')
@@ -93,8 +112,8 @@ function createCard(name, link) {
   })
 
   card.querySelector('.places__button_delete').addEventListener('click', evt => {
-    evt.target.parentNode.remove();
-  }
+      evt.target.parentNode.remove();
+    }
   )
   return card;
 }
