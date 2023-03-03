@@ -14,6 +14,15 @@ const cardZoomPopupCaption = cardZoomPopup.querySelector('.popup__caption');
 
 const closeButtons = document.querySelectorAll('.popup__close-button');
 
+const params = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_error',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error',
+}
+
 const escKeydownHandler = (evt) => {
   if (evt.key === 'Escape') {
     const openPopup = document.querySelector('.popup_opened')
@@ -30,6 +39,7 @@ function closePopup(p) {
 function openPopup(p) {
   p.classList.add('popup_opened');
   document.addEventListener('keydown', escKeydownHandler);
+  hideFormErrors(p, params);
 }
 
 const closePopupOverlay = (evt) => {
@@ -54,6 +64,7 @@ editProfilePopup.querySelector('.popup__form')
     evt.preventDefault();
     profileName.textContent = editProfilePopupNameInput.value;
     profileDescription.textContent = editProfilePopupDescriptionInput.value;
+    editProfilePopup.querySelector('.popup__form').reset();
     closePopup(editProfilePopup);
   })
 
@@ -143,5 +154,4 @@ addCardPopup.querySelector('.popup__form').addEventListener('submit', evt => {
   closePopup(addCardPopup);
   evt.target.reset();
 })
-
 

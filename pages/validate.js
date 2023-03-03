@@ -2,10 +2,12 @@ const enableButton = (buttonElement, params) => {
   buttonElement.removeAttribute('disabled');
   buttonElement.classList.remove(params.inactiveButtonClass);
 };
+
 const disableButton = (buttonElement, params) => {
   buttonElement.setAttribute('disabled', true);
   buttonElement.classList.add(params.inactiveButtonClass);
 };
+
 const toggleButtonState = (inputs, submitElement, params) => {
   const formIsValid = inputs.every(inputElement => inputElement.validity.valid)
   if (formIsValid) {
@@ -46,14 +48,12 @@ const setEventListeners = (popupForm, params) => {
   });
 };
 
-
 const enableValidation = (params) => {
   const popupForms = Array.from(document.querySelectorAll(params.formSelector));
   popupForms.forEach((popupForm) => {
     setEventListeners(popupForm, params);
   });
 };
-
 
 enableValidation({
   formSelector: '.popup__form',
@@ -63,3 +63,12 @@ enableValidation({
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error',
 });
+
+const hideFormErrors = (popupForm, params) => {
+  const inputs = Array.from(popupForm.querySelectorAll(params.inputSelector));
+  const buttonElement = popupForm.querySelector(params.submitButtonSelector);
+  inputs.forEach((popupInput) => {
+    hideInputError(popupForm, popupInput, params);
+    toggleButtonState(inputs, buttonElement, params);
+  });
+}
