@@ -1,10 +1,10 @@
 const enableButton = (buttonElement, params) => {
-  buttonElement.removeAttribute('disabled');
+  buttonElement.disabled = false;
   buttonElement.classList.remove(params.inactiveButtonClass);
 };
 
 const disableButton = (buttonElement, params) => {
-  buttonElement.setAttribute('disabled', true);
+  buttonElement.disabled = true;
   buttonElement.classList.add(params.inactiveButtonClass);
 };
 
@@ -49,8 +49,8 @@ const setEventListeners = (popupForm, params) => {
 };
 
 const enableValidation = (params) => {
-  const popupForms = Array.from(document.querySelectorAll(params.formSelector));
-  popupForms.forEach((popupForm) => {
+  const forms = Array.from(document.querySelectorAll(params.formSelector));
+  forms.forEach((popupForm) => {
     setEventListeners(popupForm, params);
   });
 };
@@ -67,8 +67,8 @@ enableValidation({
 const hideFormErrors = (popupForm, params) => {
   const inputs = Array.from(popupForm.querySelectorAll(params.inputSelector));
   const buttonElement = popupForm.querySelector(params.submitButtonSelector);
+  toggleButtonState(inputs, buttonElement, params);
   inputs.forEach((popupInput) => {
     hideInputError(popupForm, popupInput, params);
-    toggleButtonState(inputs, buttonElement, params);
   });
 }
