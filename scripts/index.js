@@ -1,32 +1,23 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
 
-const popupEditProfile = document.querySelector('.popup_profile');
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
-const popupEditProfileNameInput = document.querySelector('.popup__input_type_name');
-const popupEditProfileDescriptionInput = document.querySelector('.popup__input_type_description');
-
-const cardZoomPopup = document.querySelector('.popup_zoom');
-
-const popupAddCard = document.querySelector('.popup_add');
-const popupAddCardNameInput = popupAddCard.querySelector('.popup__input_type_title');
-const popupAddCardLinkInput = popupAddCard.querySelector('.popup__input_type_link');
-
-
-const buttonsClose = document.querySelectorAll('.popup__close-button');
-const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
-const popupAddCardForm = popupAddCard.querySelector('.popup__form');
-
-
-const validationParams = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_error',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error',
-}
+import {
+  popupEditProfile,
+  profileName,
+  profileDescription,
+  popupEditProfileNameInput,
+  popupEditProfileDescriptionInput,
+  cardZoomPopup,
+  popupAddCard,
+  popupAddCardNameInput,
+  popupAddCardLinkInput,
+  buttonsClose,
+  popupEditProfileForm,
+  popupAddCardForm,
+  placesSection,
+  validationParams,
+  initialCards,
+} from './constans.js';
 
 const formValidatorEditProfile = new FormValidator(validationParams, popupEditProfileForm);
 const formValidatorAddCard = new FormValidator(validationParams, popupAddCardForm);
@@ -59,15 +50,16 @@ const closePopupOverlay = (evt) => {
 
 popupEditProfile.addEventListener('click', closePopupOverlay);
 cardZoomPopup.addEventListener('click', closePopupOverlay);
-popupAddCard.addEventListener('click', closePopupOverlay);
+popupAddCard.addEventListener('mousedown', closePopupOverlay);
 
+const openPopupEditProfile = () => {
+  popupEditProfileNameInput.value = profileName.textContent;
+  popupEditProfileDescriptionInput.value = profileDescription.textContent;
+  formValidatorEditProfile.hideErrors();
+  openPopup(popupEditProfile);
+}
 document.querySelector('.profile__modify')
-  .addEventListener("click", () => {
-    popupEditProfileNameInput.value = profileName.textContent;
-    popupEditProfileDescriptionInput.value = profileDescription.textContent;
-    formValidatorEditProfile.hideErrors();
-    openPopup(popupEditProfile);
-  })
+  .addEventListener("click", () => openPopupEditProfile());
 
 popupEditProfileForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -81,47 +73,16 @@ buttonsClose.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-const placesSection = document.querySelector('.places');
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 function createCard(name, link) {
   const card = new Card(name, link, openPopup);
   return card.generateCard();
 }
 
 function initCards() {
-
   initialCards.forEach(elm => {
     const card = createCard(elm.name, elm.link);
     placesSection.append(card);
-
   })
-
 }
 
 initCards();
@@ -137,7 +98,7 @@ popupAddCardForm.addEventListener('submit', evt => {
   evt.preventDefault();
   const newCardName = popupAddCardNameInput.value;
   const newCardLink = popupAddCardLinkInput.value;
-  placesSection.insertBefore(createCard(newCardName, newCardLink), placesSection.firstChild);
+  placesSection.prepend(createCard(newCardName, newCardLink));
   closePopup(popupAddCard);
   evt.target.reset();
 })
