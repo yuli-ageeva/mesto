@@ -17,7 +17,7 @@ import {
   placesSection,
   validationParams,
   initialCards,
-} from './constans.js';
+} from './constants.js';
 
 const formValidatorEditProfile = new FormValidator(validationParams, popupEditProfileForm);
 const formValidatorAddCard = new FormValidator(validationParams, popupAddCardForm);
