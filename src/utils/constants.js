@@ -1,16 +1,15 @@
-export const popupEditProfile = document.querySelector('.popup_profile');
-export const profileName = document.querySelector('.profile__name');
-export const profileDescription = document.querySelector('.profile__description');
+export const popupEditProfileSelector = '.popup_profile';
+export const popupEditProfile = document.querySelector('.popup_profile')
+export const buttonEditProfile = document.querySelector('.profile__modify')
 export const popupEditProfileNameInput = document.querySelector('.popup__input_type_name');
 export const popupEditProfileDescriptionInput = document.querySelector('.popup__input_type_description');
-export const cardZoomPopup = document.querySelector('.popup_zoom');
-export const popupAddCard = document.querySelector('.popup_add');
-export const popupAddCardNameInput = popupAddCard.querySelector('.popup__input_type_title');
-export const popupAddCardLinkInput = popupAddCard.querySelector('.popup__input_type_link');
-export const buttonsClose = document.querySelectorAll('.popup__close-button');
+export const cardZoomPopupSelector ='.popup_zoom';
+export const popupAddCardSelector = '.popup_add';
+export const popupAddCard = document.querySelector('.popup_add')
+export const buttonOpenAddCard = document.querySelector('.profile__add-button');
 export const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
 export const popupAddCardForm = popupAddCard.querySelector('.popup__form');
-export const placesSection = document.querySelector('.places');
+export const placesContainerSection = '.places';
 export const validationParams = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
