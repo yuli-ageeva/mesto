@@ -36,11 +36,11 @@ const popupWithEditProfileForm = new PopupWithForm(popupEditProfileSelector,(dat
 });
 popupWithEditProfileForm.setEventListeners();
 
-const popupWithAddCardForm = new PopupWithForm(popupAddCardSelector,({title, source}) => {
-  if (title === '' || source === '') {
+const popupWithAddCardForm = new PopupWithForm(popupAddCardSelector,({name, link}) => {
+  if (name === '' || link === '') {
     return
   }
-  initCards({name: title, link: source});
+  initCards({name: name, link: link});
   popupWithAddCardForm.close();
 });
 
