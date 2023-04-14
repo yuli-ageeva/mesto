@@ -18,6 +18,7 @@
 .places__name{color:#000;font-family:Inter;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .places__like{background-color:#fff;background-image:url(87ed371465c7a6a1cd01.svg);background-position:50%;background-repeat:no-repeat;border:none;box-sizing:border-box;cursor:pointer;flex-shrink:0;height:19px;width:22px}.places__like:hover{opacity:.5}
 .places__like_active{background-image:url(fe17a515669479b1e649.svg)}
+
 .places__button_delete{background-color:transparent;background-image:url(cbc09a894bdd4c956365.svg);border:none;box-sizing:border-box;cursor:pointer;height:19px;margin:0;padding:0;position:absolute;right:20px;top:20px;width:18px}.places__button_delete:hover{opacity:.6}
 .footer{margin:69px auto 55px}@media screen and (max-width:500px){.footer{margin:48px 19px 36px}}
 .footer__copyright{color:#545454;font-family:Inter;font-size:18px;font-style:normal;font-weight:400;line-height:22px}@media screen and (max-width:500px){.footer__copyright{font-size:14px;line-height:17px}}
