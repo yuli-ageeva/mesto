@@ -4,7 +4,6 @@ export default class FormValidator {
     this._form = form;
     this._buttonElement = this._form.querySelector(this._validationParams.submitButtonSelector);
     this._popupInputs = Array.from(this._form.querySelectorAll(this._validationParams.inputSelector));
-
   }
 
   enableValidation() {

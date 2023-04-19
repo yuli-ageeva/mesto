@@ -5,10 +5,15 @@ export const popupEditProfileNameInput = document.querySelector('.popup__input_t
 export const popupEditProfileDescriptionInput = document.querySelector('.popup__input_type_description');
 export const cardZoomPopupSelector ='.popup_zoom';
 export const popupAddCardSelector = '.popup_add';
+export const popupAvatarSelector = '.popup_avatar';
+export const buttonAvatar = document.querySelector('.profile__avatar-button')
+export const popupAvatar = document.querySelector('.popup_avatar')
 export const popupAddCard = document.querySelector('.popup_add')
 export const buttonOpenAddCard = document.querySelector('.profile__add-button');
 export const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
+export const popupWithConfirmationSelector = '.popup_confirm';
 export const popupAddCardForm = popupAddCard.querySelector('.popup__form');
+export const popupAvatarForm = popupAvatar.querySelector('.popup__form-avatar');
 export const placesContainerSection = '.places';
 export const validationParams = {
   formSelector: '.popup__form',
@@ -18,29 +23,3 @@ export const validationParams = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error',
 };
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
