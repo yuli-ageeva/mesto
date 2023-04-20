@@ -9,25 +9,14 @@ class Api {
     return fetch(this.baseUrl + '/users/me', {
       headers: this.headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка при загрузке пользовательской информации: ${res.status}`);
-      })
-
+      .then(this._checkResponse)
   }
 
   getCards() {
     return fetch(this.baseUrl + '/cards', {
       headers: this.headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка при загрузке карточек: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   setNewInfo(data) {
@@ -39,12 +28,7 @@ class Api {
         about: data.description,
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка при обновлении информации: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   addNewCard(data) {
@@ -56,12 +40,7 @@ class Api {
         link: data.link,
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка при добавлении новой карточки: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   deleteCard(id) {
@@ -69,12 +48,7 @@ class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return
-        }
-        return Promise.reject(`Ошибка при удалении карточки: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   setNewAvatar(data) {
@@ -85,12 +59,7 @@ class Api {
         avatar: data.avatar,
       }),
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка при загрузке аватара: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   _setLike(id) {
@@ -98,12 +67,7 @@ class Api {
       method: 'PUT',
       headers: this.headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка при загрузке лайков: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   _deleteLike(id) {
@@ -111,12 +75,7 @@ class Api {
       method: 'DELETE',
       headers: this.headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка при удалении лайка: ${res.status}`);
-      })
+      .then(this._checkResponse)
   }
 
   toggleLike(id, isLiked) {
@@ -127,6 +86,12 @@ class Api {
     }
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка ${res.status}`);
+  }
 }
 
 

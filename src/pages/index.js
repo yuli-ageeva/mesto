@@ -28,34 +28,7 @@ import {
 
 let userId
 
-function loadUserInfo() {
-  api.getUserInfo()
-    .then((res) => {
-      userInfo.setUserInfo({
-        name: res.name,
-        description: res.about,
-      })
-      userInfo.setUserAvatar({
-        avatar: res.avatar,
-      })
-      userId = res._id
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-}
 
-function loadCards() {
-  api.getCards()
-    .then((res) => {
-      res.reverse().forEach(item => {
-        section.addItem(item)
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-}
 
 
 const formValidatorEditProfile = new FormValidator(validationParams, popupEditProfileForm);
@@ -143,7 +116,6 @@ buttonEditProfile.addEventListener("click", () => {
 
 buttonOpenAddCard.addEventListener("click", () => {
   formValidatorAddCard.hideErrors();
-  popupAddCardForm.reset();
   popupWithAddCardForm.open();
 });
 
@@ -166,6 +138,7 @@ const handleDeleteButtonClick = card => {
     api.deleteCard(card.getId())
       .then(res => {
         card.remove()
+        popupWithConfirmation.close();
       })
       .catch((err) => {
         console.log(err);
@@ -184,8 +157,25 @@ function createCard(data) {
 
 const section = new Section(placesContainerSection, createCard);
 
-loadUserInfo();
-loadCards()
+Promise.all([ api.getUserInfo(), api.getCards()])
+  .then(([dataUserInfo, dataCards]) => {
+    userId = dataUserInfo._id,
+    userInfo.setUserInfo({
+      name: dataUserInfo.name,
+      description: dataUserInfo.about,
+    })
+    userInfo.setUserAvatar({
+      avatar: dataUserInfo.avatar,
+    });
+    dataCards.reverse().forEach(item => {
+      section.addItem(item)
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+
 
 
 
